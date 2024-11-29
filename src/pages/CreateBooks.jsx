@@ -28,7 +28,7 @@ const CreateBooks = () => {
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Book Created successfully', { variant: 'success' });
-        navigate('https://shop-status-zenu.onrender.com');
+        navigate('/');
       })
       .catch((error) => {
         setLoading(false);
