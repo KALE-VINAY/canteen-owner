@@ -52,12 +52,12 @@ const BooksTable = ({ books, onToggleStatus }) => {
         <tr>
           <th className="border border-slate-600 rounded-md">No</th>
           <th className="border border-slate-600 rounded-md">Title</th>
-          <th className="border border-slate-600 rounded-md max-md:hidden">
+          {/* <th className="border border-slate-600 rounded-md max-md:hidden">
             Author
           </th>
           <th className="border border-slate-600 rounded-md max-md:hidden">
             Publish Year
-          </th>
+          </th> */}
           <th className="border border-slate-600 rounded-md">Status</th>
           <th className="border border-slate-600 rounded-md">Operations</th>
         </tr>
@@ -71,12 +71,12 @@ const BooksTable = ({ books, onToggleStatus }) => {
             <td className="border border-slate-700 rounded-md text-center">
               {book.title}
             </td>
-            <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+            {/* <td className="border border-slate-700 rounded-md text-center max-md:hidden">
               {book.author}
             </td>
             <td className="border border-slate-700 rounded-md text-center max-md:hidden">
               {book.publishYear}
-            </td>
+            </td> */}
             <td className="border border-slate-700 rounded-md text-center">
               <div className="flex items-center justify-center">
                 {/* Toggle Button */}
