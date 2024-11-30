@@ -7,8 +7,8 @@ import { useSnackbar } from 'notistack';
 
 const CreateBooks = () => {
   const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
-  const [publishYear, setPublishYear] = useState('');
+  const [imgUrl, setimgUrl] = useState('');
+  // const [publishYear, setPublishYear] = useState('');
   const [statusshop, setStatusshop] = useState('');
 
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ const CreateBooks = () => {
   const handleSaveBook = () => {
     const data = {
       title,
-      // author,
+      imgUrl,
       // publishYear,
       statusshop,
     };
@@ -53,15 +53,15 @@ const CreateBooks = () => {
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
         </div>
-        {/* <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Author</label>
+        <div className='my-4'>
+          <label className='text-xl mr-4 text-gray-500'>imgUrl</label>
           <input
             type='text'
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
+            value={imgUrl}
+            onChange={(e) => setimgUrl(e.target.value)}
             className='border-2 border-gray-500 px-4 py-2  w-full '
           />
-        </div> */}
+        </div>
         {/* <div className='my-4'>
           <label className='text-xl mr-4 text-gray-500'>Publish Year</label>
           <input
