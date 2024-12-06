@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { auth } from './firebaseConfig'; // Path to your Firebase config file
-
+// import { auth } from './firebaseConfig'; // Path to your Firebase config file
+import { auth } from './firebase';
 const apiClient = axios.create({
   baseURL: 'https://shop-status-zenu.onrender.com', // Replace with your backend URL
 });
