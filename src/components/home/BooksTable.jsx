@@ -11,7 +11,7 @@ import { useEffect } from "react";
 const BooksTable = ({ books, onToggleStatus }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [localBooks, setLocalBooks] = useState(books || []);
-  console.log("Books received in BooksTable:", books); // Log to check the structure
+  // console.log("Books received in BooksTable:", books); // Log to check the structure
   // const handleStatusToggle = async (bookId) => {
   //   // Find the current book
   //   const bookToUpdate = localBooks.find(book => book._id === bookId);

@@ -33,7 +33,7 @@ const Home = () => {
     apiClient
       .get('/books') // Backend route for fetching books
       .then((response) => {
-        console.log('API Response:', response.data.data);  // Log the API response
+        // console.log('API Response:', response.data.data);  // Log the API response
 
         setBooks(response.data.data); // Handle the response data
         setLoading(false); // Stop loading after data is fetched
