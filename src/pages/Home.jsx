@@ -7,22 +7,36 @@ import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import BooksTable from '../components/home/BooksTable';
 import BooksCard from '../components/home/BooksCard';
+import apiClient from '../utils/apiClient';
+
 
 const Home = () => {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [showType, setShowType] = useState('table');
 
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios
+  //     .get('https://shop-status-zenu.onrender.com/books')
+  //     .then((response) => {
+  //       setBooks(response.data.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setLoading(false);
+  //     });
+  // }, []);
   useEffect(() => {
     setLoading(true);
-    axios
-      .get('https://shop-status-zenu.onrender.com/books')
+    apiClient
+      .get('/books') // Backend route for fetching books
       .then((response) => {
-        setBooks(response.data.data);
-        setLoading(false);
+        setBooks(response.data.data); // Handle the response data
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         setLoading(false);
       });
   }, []);

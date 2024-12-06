@@ -5,38 +5,69 @@ import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineDelete } from "react-icons/md";
 import axios from "axios";
 import { useSnackbar } from 'notistack';
+import apiClient from "../../utils/apiClient";
 
 const BooksTable = ({ books, onToggleStatus }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [localBooks, setLocalBooks] = useState(books);
 
-  const handleStatusToggle = async (bookId) => {
-    // Find the current book
-    const bookToUpdate = localBooks.find(book => book._id === bookId);
+  // const handleStatusToggle = async (bookId) => {
+  //   // Find the current book
+  //   const bookToUpdate = localBooks.find(book => book._id === bookId);
     
-    // Determine new status
+  //   // Determine new status
+  //   const newStatus = bookToUpdate.statusshop === "Open" ? "Closed" : "Open";
+
+  //   try {
+  //     // Send PUT request to update status
+  //     const response = await axios.put(`https://shop-status-zenu.onrender.com/books/${bookId}`, {
+  //       ...bookToUpdate,
+  //       statusshop: newStatus
+  //     });
+
+  //     // Update local state
+  //     const updatedBooks = localBooks.map(book => 
+  //       book._id === bookId 
+  //         ? { ...book, statusshop: newStatus } 
+  //         : book
+  //     );
+      
+  //     setLocalBooks(updatedBooks);
+
+  //     // Show success notification
+  //     enqueueSnackbar(`Shop status updated to ${newStatus}`, { variant: 'success' });
+
+  //     // Call parent component's update function if provided
+  //     if (onToggleStatus) {
+  //       onToggleStatus(bookId, newStatus);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error updating book status:", error);
+  //     enqueueSnackbar('Failed to update status', { variant: 'error' });
+  //   }
+  // };
+  const handleStatusToggle = async (bookId) => {
+    const bookToUpdate = localBooks.find((book) => book._id === bookId);
     const newStatus = bookToUpdate.statusshop === "Open" ? "Closed" : "Open";
-
+  
     try {
-      // Send PUT request to update status
-      const response = await axios.put(`https://shop-status-zenu.onrender.com/books/${bookId}`, {
+      const response = await apiClient.put(`/books/${bookId}`, {
         ...bookToUpdate,
-        statusshop: newStatus
+        statusshop: newStatus,
       });
-
+  
       // Update local state
-      const updatedBooks = localBooks.map(book => 
-        book._id === bookId 
-          ? { ...book, statusshop: newStatus } 
+      const updatedBooks = localBooks.map((book) =>
+        book._id === bookId
+          ? { ...book, statusshop: newStatus }
           : book
       );
-      
+  
       setLocalBooks(updatedBooks);
-
+  
       // Show success notification
       enqueueSnackbar(`Shop status updated to ${newStatus}`, { variant: 'success' });
-
-      // Call parent component's update function if provided
+  
       if (onToggleStatus) {
         onToggleStatus(bookId, newStatus);
       }
@@ -45,7 +76,7 @@ const BooksTable = ({ books, onToggleStatus }) => {
       enqueueSnackbar('Failed to update status', { variant: 'error' });
     }
   };
-
+  
   return (
     <table className="w-full border-separate border-spacing-2">
       <thead>
