@@ -6,11 +6,12 @@ import { MdOutlineDelete } from "react-icons/md";
 import axios from "axios";
 import { useSnackbar } from 'notistack';
 import apiClient from "../../utils/apiClient";
+import { useEffect } from "react";
 
 const BooksTable = ({ books, onToggleStatus }) => {
   const { enqueueSnackbar } = useSnackbar();
-  const [localBooks, setLocalBooks] = useState(books);
-
+  const [localBooks, setLocalBooks] = useState(books || []);
+  console.log("Books received in BooksTable:", books); // Log to check the structure
   // const handleStatusToggle = async (bookId) => {
   //   // Find the current book
   //   const bookToUpdate = localBooks.find(book => book._id === bookId);
@@ -77,6 +78,11 @@ const BooksTable = ({ books, onToggleStatus }) => {
     }
   };
   
+  useEffect(() => {
+    setLocalBooks(books); // Update the localBooks state when props change
+  }, [books]);
+
+
   return (
     <table className="w-full border-separate border-spacing-2">
       <thead>

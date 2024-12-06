@@ -33,13 +33,24 @@ const Home = () => {
     apiClient
       .get('/books') // Backend route for fetching books
       .then((response) => {
+        console.log('API Response:', response.data.data);  // Log the API response
+
         setBooks(response.data.data); // Handle the response data
+        setLoading(false); // Stop loading after data is fetched
       })
       .catch((error) => {
         console.error(error);
         setLoading(false);
       });
   }, []);
+
+  const handleToggleStatus = (bookId, newStatus) => {
+    const updatedBooks = books.map((book) =>
+      book._id === bookId ? { ...book, statusshop: newStatus } : book
+    );
+    setBooks(updatedBooks);
+  };
+  
 
   return (
     <div className='p-4'>
@@ -66,7 +77,7 @@ const Home = () => {
       {loading ? (
         <Spinner />
       ) : showType === 'table' ? (
-        <BooksTable books={books} />
+        <BooksTable books={books} onToggleStatus={handleToggleStatus} />
       ) : (
         <BooksCard books={books} />
       )}

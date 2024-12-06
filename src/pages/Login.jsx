@@ -250,7 +250,7 @@ import {updateProfile } from "firebase/auth";
 import { onAuthStateChanged } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { addUser ,removeUser } from '../utils/userSlice';
-import { BG_URL, USER_AVATER } from '../utils/constants';
+// import { BG_URL, USER_AVATER } from '../utils/constants';
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
