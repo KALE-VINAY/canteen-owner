@@ -349,7 +349,7 @@ const Login = () => {
             md:p-8 
             bg-white/60 
             backdrop-blur-sm 
-            rounded-xl 
+            rounded-xl  
             shadow-lg 
             border 
             border-gray-200
