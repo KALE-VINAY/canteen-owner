@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { db, auth } from '../firebase/firebaseConfig.jsx'; // Import Firebase configuration
 import { collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
+import Mainheader from '../components/Mainheader.jsx';
 
 const CanteenDashboard = () => {
   const [canteens, setCanteens] = useState([]);
   const user = auth.currentUser;
+  // const user = useSelector((state) => state.user); // Use Redux state instead of auth.currentUser
 
   useEffect(() => {
     const fetchCanteens = async () => {
@@ -51,8 +53,10 @@ const CanteenDashboard = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-8">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Your Canteens</h1>
+    <div className="min-h-screen bg-gray-50">
+      <Mainheader/>
+      <h1 className="text-2xl font-bold text-gray-800 px-2 mb-6">Your Canteens</h1>
+      
       <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {canteens.map(canteen => (
           <div

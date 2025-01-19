@@ -141,9 +141,9 @@ const Mainheader = () => {
   // bg-gradient-to-b from-black
 
   return (
-    <div className='relative w-full px-4 py-3 bg-gradient-to-r from-orange-400 z-10 flex flex-wrap justify-between items-center'>
-      <h1 className='text-xl '>
-  Canteens TU
+    <div className='relative w-full px-3 py-3 mb-4 bg-gradient-to-r from-orange-400 z-10 flex  justify-between items-center'>
+      <h1 className='text-3xl font-bold text-gray-800 '>
+  Canteens
   </h1>
       {/* <img className="w-16 md:w-24 bg-black" src="main_logo.png" alt="logo" /> */}
       <h1 className='text-5xl sm:block bg-gradient-to-b from-white md:block lg:block xl:block font-serif text-center hidden'>
@@ -163,7 +163,7 @@ const Mainheader = () => {
             />
             <button 
               onClick={handleSignOut} 
-              className='ml-2 text-white font-bold'>
+              className='ml-2 text-black font-bold'>
               Sign Out
             </button>
           </div>
